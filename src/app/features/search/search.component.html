@@ -1,0 +1,51 @@
+<!--CONTENT-->
+<div class="wrapper three-cols">
+    <!--SIDEBAR-->
+    <sm-card [title]="text" customClass="side-bar" [isScrollable]="true">
+        <sm-hotel-form [text]="text" (search)="searchHotels($event)">
+        </sm-hotel-form>
+
+        <sm-separator></sm-separator>
+
+        <sm-hotel-list [hotels]="hotels" [active]="active" [text]="text" (setActive)="setActive($event)">
+        </sm-hotel-list>
+    </sm-card>
+
+    <!--MAP-->
+    <sm-card customClass="map" [padding]="false">
+        <sm-gmap [active]="active"></sm-gmap>
+    </sm-card>
+
+
+
+    <!--INFO BOX-->
+    <sm-card [isCentered]="true">
+        <!--<img src="https://picsum.photos/400/200/?image=12" width="100%" height="200">-->
+
+        <sm-separator></sm-separator>
+        <sm-rates [active]="active"></sm-rates>
+        <sm-stars [stars]="active?.stars"></sm-stars>
+
+        <br>
+
+        <sm-reservations [active]="active" (addToCart)="addToCart($event, active!)"></sm-reservations>
+    </sm-card>
+
+    <!--IMAGE GALLERY-->
+    <sm-card [isScrollable]="true" customClass="gallery">
+        <sm-image-gallery [active]="active" [activeImage]="activeImage"></sm-image-gallery>
+    </sm-card>
+
+
+    <!--SERVICES-->
+    <sm-card customClass="services" [isScrollable]="true" title="Services">
+        <sm-services [active]="active"></sm-services>
+    </sm-card>
+
+    <!--CONTACT FORM-->
+    <sm-card customClass="contact" title="Contacts">
+
+        <sm-contact-form (send)="sendEmail($event)"></sm-contact-form>
+    </sm-card>
+
+</div>
